@@ -2,17 +2,24 @@
     //Message treatment
 
     //Post an email
-    if(isset($POST['image'])){
+    if(isset($_POST['image'])){
         $to = 'sukkhato@hotmail.com';
         $subject = "Votre image du ".date('Y-m-d HH:mm:ss', time());
-        $message =  '<img src="'.$POST['image'].'"/>';
+        $message =  '<img src="'.$_POST['image'].'"/>';
         $headers = 'From: admin@mail.com';
 
-        mail($to, $subject, $message, $headers);
+        if(mail($to, $subject, $message, $headers)){
+            echo 'image sent';
+        } else {
+            echo 'error sending image: '.$_POST['image'];
+        };
         echo "sent";
         return;
     };
 
     //Mail test
-    mail('sukkhato@hotmail.com', 'pctest', 'some test message', 'From: admin@mail.com');
-    echo $POST;
+    if(mail('sukkhato@hotmail.com', 'pctest', 'some test message', 'From: admin@mail.com')){
+        echo 'sent';
+    } else {
+        echo 'error';
+    };
