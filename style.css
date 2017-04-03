@@ -1,0 +1,9 @@
+body > textarea, body > input {
+    display: block;
+}
+
+#input-text {
+    width: 500;
+    height: 200;
+    resize: none;
+}
