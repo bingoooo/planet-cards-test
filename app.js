@@ -50,7 +50,7 @@ var adresse = document.getElementById('adresse');
 var cp = document.getElementById('cp');
 var required = document.getElementById('required_modal')
 var requiredEmail = document.getElementById('required_email');
-var sendingModal = $('#sending_modal');
+var sendingModal = document.getElementById('sending_modal');
 
 send.addEventListener("click", function(event){
     console.log("clicked", event);
@@ -106,7 +106,10 @@ send.addEventListener("click", function(event){
     divTest.innerHTML = '<img src="' + image + '" />';
 
     //POST datas in back end for treatment
-
+    $.post("send.php", {image: image}).done(function(data){
+        console.log(data);
+    });
+    
     //Simulating sending message
     sendingModal.classList.remove('hidden');
     setTimeout(function(){
