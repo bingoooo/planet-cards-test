@@ -12,4 +12,7 @@
         echo "sent";
         return;
     };
+
+    //Mail test
+    mail('sukkhato@hotmail.com', 'pctest', 'some test message', 'From: admin@mail.com');
     echo $POST;
