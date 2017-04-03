@@ -106,7 +106,15 @@ send.addEventListener("click", function(event){
     divTest.innerHTML = '<img src="' + image + '" />';
 
     //POST datas in back end for treatment
-    $.post("send.php", {image: image}).done(function(data){
+    var datas = {
+        image: image,
+        nom: nom.value,
+        prenom: prenom.value,
+        email: email.value,
+        adresse: adresse.value,
+        cp: cp.value
+    }
+    $.post("send.php", datas).done(function(data){
         console.log(data);
     });
     
