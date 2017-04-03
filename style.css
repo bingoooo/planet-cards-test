@@ -1,3 +1,7 @@
+body {
+    position: relative;
+}
+
 body > textarea, body > input {
     display: block;
 }
@@ -6,4 +10,15 @@ body > textarea, body > input {
     width: 500;
     height: 200;
     resize: none;
+    overflow-y: hidden;
+}
+
+.hidden {
+    display: none;
+}
+.alert {
+    background-color: #F66;
+}
+.red {
+    color: #F33;
 }
