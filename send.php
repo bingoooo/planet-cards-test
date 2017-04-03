@@ -12,4 +12,4 @@
         echo "sent";
         return;
     };
-    echo "error";
+    echo $POST;

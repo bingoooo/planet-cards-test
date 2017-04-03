@@ -102,8 +102,8 @@ send.addEventListener("click", function(event){
     //Convert canvas to image
     var image = new Image();
     image = canvas.toDataURL("image/png");
-    console.log(image);
-    divTest.innerHTML = '<img src="' + image + '" />';
+    //console.log(image);
+    //divTest.innerHTML = '<img src="' + image + '" />';
 
     //POST datas in back end for treatment
     var datas = {
@@ -114,6 +114,7 @@ send.addEventListener("click", function(event){
         adresse: adresse.value,
         cp: cp.value
     }
+    var datas = 'image='+image;
     $.post("send.php", datas).done(function(data){
         console.log(data);
     });
