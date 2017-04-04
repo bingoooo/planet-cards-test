@@ -1,7 +1,22 @@
 <?php 
     date_default_timezone_set('Etc/UTC');
-    //Send email using PHPMailer you may configure a gmail SMTP or other
     require './PHPMailerAutoload.php';
+
+    //Check $_POST values
+    $nom = $_POST['nom'];
+    $prenom = $_POST['prenom'];
+    $email = $_POST['email'];
+    $adresse = $_POST['adresse'];
+    $cp = $_POST['cp'];
+    $image = $_POST['image'];
+    echo "$nom $prenom $email $adresse $cp $image";
+    return;
+    if($nom == null || $prenom == null || $email == null || $adresse == null || $cp == null || $image == null){
+
+    }
+    
+
+    //Send email using PHPMailer you may configure a gmail SMTP or other 
     $mail = new PHPMailer;
     $mail->isSMTP();
     $mail->SMTPDebug = 2;
@@ -12,7 +27,8 @@
     $mail->SMTPAuth = true;
     $mail->Username = USERNAME;
     $mail->Password = PASSWORD;
-    $mail->setFrom('sukkhato@gmail.com', 'Benjamin Dant');
+    $mail->setFrom(USERNAME, 'Benjamin Dant');
+    if(isset())
     $mail->addAddress('sukkhato@hotmail.com', 'Benjamin Dant');
     $mail->Subject = "PHP Mailer Test";
     if(isset($_POST['image'])){
