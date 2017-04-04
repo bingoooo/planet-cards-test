@@ -2,14 +2,14 @@
     date_default_timezone_set('Etc/UTC');
     require './PHPMailerAutoload.php';
     //Check $_POST values
-    $nom = $_POST['nom'];
+    /*$nom = $_POST['nom'];
     $prenom = $_POST['prenom'];
     $email = $_POST['email'];
     $adresse = $_POST['adresse'];
     $cp = $_POST['cp'];
     $image = $_POST['image'];
     echo "$nom $prenom $email $adresse $cp $image";
-    return;
+    return;*/
     //Send email using PHPMailer you may configure a gmail SMTP or other 
     $mail = new PHPMailer;
     $mail->isSMTP();
@@ -27,8 +27,10 @@
     $mail->Subject = "PHP Mailer Test";
     if(isset($_POST['image'])){
         $mail->Body = '<img src="' . $_POST['image'] . '"/>';
+        echo $_POST['image']; return;
     } else {
         $mail->Body = 'No image sent';
+        return;
     }
     $mail->AltBody = "Plain Text Message Body";
     if(!$mail->send()){
