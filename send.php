@@ -1,6 +1,10 @@
 <?php 
     date_default_timezone_set('Etc/UTC');
     require './PHPMailerAutoload.php';
+    //Get values from heroku config vars
+    $username = ENV['USERNAME'];
+    $password = ENV['PASSWORD'];
+
     //Check $_POST values
     $nom = $_POST['nom'];
     $prenom = $_POST['prenom'];
@@ -8,6 +12,7 @@
     $adresse = $_POST['adresse'];
     $cp = $_POST['cp'];
     $image = $_POST['image'];
+    
     //Send email using PHPMailer you may configure a gmail SMTP or other 
     $mail = new PHPMailer;
     $mail->isSMTP();
@@ -17,9 +22,9 @@
     $mail->Port = 587;
     $mail->SMTPSecure = 'tls';
     $mail->SMTPAuth = true;
-    $mail->Username = USERNAME;
-    $mail->Password = PASSWORD;
-    $mail->setFrom(USERNAME, 'Benjamin Dant');
+    $mail->Username = $username;
+    $mail->Password = $password;
+    $mail->setFrom($username, 'Benjamin Dant');
     $mail->addAddress($email, $prenom.' '.$nom);
     $mail->Subject = "PHP Mailer Test";
     if(isset($_POST['image'])){
