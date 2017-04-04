@@ -39,18 +39,12 @@ ctx.fillText(canvasText, (width/2)-(canvasTextWidth.width/2), height/2, width);
 input.addEventListener("mouseup", function(event){
     width = canvas.width = input.clientWidth;
     height = canvas.height = input.clientHeight;
+    drawCard(event.target);
 });
 
 //Link mirroring to canvas when keyup in the input-text
 input.addEventListener("keyup", function(event){
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    ctx.font = fontSettings;
-    var text = this.value;
-    var keycodes = [];
-    var textList = divideTextByEnter(text);
-    var renderList = divideTableFitWidth(textList, width);
-
-    renderText(renderList);
+    drawCard(event.target);
 });
 
 //Link send message action to the 'Envoyer' button
@@ -65,8 +59,6 @@ var requiredEmail = document.getElementById('required_email');
 var sendingModal = document.getElementById('sending_modal');
 
 send.addEventListener("click", function(event){
-    console.log("clicked", event);
-
     //Check if required fields has all been full filled
     var unfilled = false;
     var testEmail = email.value.match(/@/g);
@@ -141,6 +133,20 @@ send.addEventListener("click", function(event){
 //Functions
 
 /*************************************************************************************************************/
+
+//Drawing text from textarea to canvas
+function drawCard(target){
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.font = fontSettings;
+    var text = target.value;
+    var keycodes = [];
+    var textList = divideTextByEnter(text);
+    var renderList = divideTableFitWidth(textList, width);
+
+    renderText(renderList);
+}
+
+
 //Divides a text with the Enter separator into a table
 function divideTextByEnter(text){
     if(text.length < 1 || typeof(text)!=='string'){
