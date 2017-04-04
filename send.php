@@ -12,17 +12,17 @@
     $mail->Port = 587;
     $mail->SMTPSecure = 'tls';
     $mail->SMTPAuth = true;
-/*
-
-
     $mail->Username = 'sukkhato@gmail.com';
     $mail->Password = 'Synou4ne';
     $mail->setFrom('sukkhato@gmail.com', 'Benjamin Dant');
-    //$mail->addReplyTo('reply@mail.com', 'Some One');
     $mail->addAddress('sukkhato@hotmail.com', 'Benjamin Dant');
     $mail->Subject = "PHP Mailer Test";
-    //$mail->msgHTML(file_get_contents('file.html'), dirname(__FILE__));
     $mail->AltBody = "Plain Text Message Body";
+/*
+
+
+    //$mail->addReplyTo('reply@mail.com', 'Some One');
+    //$mail->msgHTML(file_get_contents('file.html'), dirname(__FILE__));
     //$mail->addAttachment('file');
     if(!$mail->send()){
         echo "Mailer Error: ".$mail->ErrorInfo;
