@@ -123,6 +123,7 @@ send.addEventListener("click", function(event){
     var datas = 'image=' + image + '&nom=' + nom.value + '&prenom='
         + prenom.value + '&email=' + email.value + '&adresse=' + adresse.value + '&cp=' + cp.value;
     $.post("send.php", datas).done(function(data){
+        console.log(data);
         sendingModal.classList.add('hidden');
     });
 });
