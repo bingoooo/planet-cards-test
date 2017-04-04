@@ -6,15 +6,15 @@
     require './PHPMailerAutoload.php';
     $mail = new PHPMailer;
     $mail->isSMTP();
-/*
-
-
     $mail->SMTPDebug = 2;
     $mail->Debugoutput = 'html';
     $mail->Host = 'smtp.gmail.com';
     $mail->Port = 587;
     $mail->SMTPSecure = 'tls';
     $mail->SMTPAuth = true;
+/*
+
+
     $mail->Username = 'sukkhato@gmail.com';
     $mail->Password = 'Synou4ne';
     $mail->setFrom('sukkhato@gmail.com', 'Benjamin Dant');
