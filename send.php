@@ -19,8 +19,9 @@
     */
 
     //Variables echo test
-    echo USERNAME;
-    echo PASSWORD;
+    echo DATABASE_URL;
+    //echo USERNAME;
+    //echo PASSWORD;
     //Post email using PHPMailer from Google Account
     date_default_timezone_set('Etc/UTC');
 
