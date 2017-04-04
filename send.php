@@ -1,7 +1,9 @@
-<?php
+<?php 
+    echo 'Hello World';
+/*
     date_default_timezone_set('Etc/UTC');
 
-    require '../PHPMailerAutoload.php';
+    require './PHPMailerAutoload.php';
 
     $mail = new PHPMailer;
     $mail->isSMTP();
@@ -25,4 +27,5 @@
     } else {
         echo "Message sent !";
     }
+    */
 ?>
