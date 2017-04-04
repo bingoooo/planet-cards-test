@@ -9,7 +9,7 @@ var input = document.getElementById("input-text");
 var fontSize = window.getComputedStyle(input, null).getPropertyValue('font-size').replace('px', '');
 var fontFamily = window.getComputedStyle(input, null).getPropertyValue('font-family');
 var fontSettings = fontSize + 'px ' + fontFamily;
-var width = input.scrollWidth;
+var width = 500;
 var height = 200;
 
 var canvas = document.getElementById("canvas");
@@ -17,7 +17,10 @@ canvas.width = width;
 canvas.height = height;
 var ctx = canvas.getContext("2d");
 
-
+ctx.font = "30px Arial";
+var canvasText = 'CANVAS RENDER';
+var canvasTextWidth = ctx.measureText(canvasText);
+ctx.fillText(canvasText, (width/2)-(canvasTextWidth.width/2), height/2, width);
 
 /*************************************************************************************************************/
 //Events
@@ -192,7 +195,8 @@ function renderText(text){
         if(text[i].length > 0){
             var textToRender = (text[i][0] === '\n')?text[i].substring(1, text[i].length):text[i];
             var spacing = parseFloat(fontSize) + 3;
-            ctx.fillText(textToRender, 0, spacing * (i+1));
+            ctx.font = fontSettings;
+            ctx.fillText(textToRender, 1, spacing * (i+1));
         }
     }
 }
