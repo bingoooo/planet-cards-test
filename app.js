@@ -3,44 +3,57 @@
  * Application main javascript file
  */
 
+/*************************************************************************************************************/
+
 // Main variables declaration
+
+/*************************************************************************************************************/
 
 var input = document.getElementById("input-text");
 var fontSize = window.getComputedStyle(input, null).getPropertyValue('font-size').replace('px', '');
 var fontFamily = window.getComputedStyle(input, null).getPropertyValue('font-family');
 var fontSettings = fontSize + 'px ' + fontFamily;
-var width = 500;
-var height = 200;
+var width = input.clientWidth;
+var height = input.clientHeight;
+var maxChar = $("#input-text").attr('col');
+console.log(maxChar);
 
 var canvas = document.getElementById("canvas");
 canvas.width = width;
 canvas.height = height;
 var ctx = canvas.getContext("2d");
 
+//Display a text in the canvas for UI/UX
 ctx.font = "30px Arial";
 var canvasText = 'CANVAS RENDER';
 var canvasTextWidth = ctx.measureText(canvasText);
 ctx.fillText(canvasText, (width/2)-(canvasTextWidth.width/2), height/2, width);
 
 /*************************************************************************************************************/
+
 //Events
 
-//Link mirroring function when keyup in the input-text
+/*************************************************************************************************************/
+
+//Resize the canvas when the user tries to resize the textarea
+input.addEventListener("mouseup", function(event){
+    width = canvas.width = input.clientWidth;
+    height = canvas.height = input.clientHeight;
+});
+
+//Link mirroring to canvas when keyup in the input-text
 input.addEventListener("keyup", function(event){
     ctx.clearRect(0, 0, canvas.width, canvas.height);
     ctx.font = fontSettings;
     var text = this.value;
     var keycodes = [];
     var textList = divideTextByEnter(text);
-    //console.log(textList);
     var renderList = divideTableFitWidth(textList, width);
-    //console.log(renderList);
 
     renderText(renderList);
 });
 
-//WIP
-//Link send message function to the 'Envoyer' button
+//Link send message action to the 'Envoyer' button
 var send = document.getElementById("send");
 var nom = document.getElementById('nom');
 var prenom = document.getElementById('prenom');
@@ -95,6 +108,9 @@ send.addEventListener("click", function(event){
     } else {
         required.classList.add('hidden');
     }
+    
+    //Start sending message
+    sendingModal.classList.remove('hidden');
 
     //Convert canvas to image
     var image = new Image();
@@ -112,25 +128,19 @@ send.addEventListener("click", function(event){
         cp: cp.value
     }
     */
-    var datas = 'image=' + image + '&nom=' + nom.value + '&prenom=' + prenom.value + '&email=' + email.value + '&adresse=' + adresse.value + '&cp=' + cp.value;
+    var datas = 'image=' + image + '&nom=' + nom.value + '&prenom='
+        + prenom.value + '&email=' + email.value + '&adresse=' + adresse.value + '&cp=' + cp.value;
     $.post("send.php", datas).done(function(data){
-        console.log(data);
-    });
-    
-    //Simulating sending message
-    sendingModal.classList.remove('hidden');
-    setTimeout(function(){
         sendingModal.classList.add('hidden');
-    }, 2000);
+    });
 });
 
 
 /*************************************************************************************************************/
 
-
+//Functions
 
 /*************************************************************************************************************/
-//Functions
 //Divides a text with the Enter separator into a table
 function divideTextByEnter(text){
     if(text.length < 1 || typeof(text)!=='string'){
@@ -194,9 +204,9 @@ function renderText(text){
     for (var i = 0; i < text.length; i++){
         if(text[i].length > 0){
             var textToRender = (text[i][0] === '\n')?text[i].substring(1, text[i].length):text[i];
-            var spacing = parseFloat(fontSize) + 3;
+            var spacing = parseFloat(fontSize) + 2;
             ctx.font = fontSettings;
-            ctx.fillText(textToRender, 1, spacing * (i+1));
+            ctx.fillText(textToRender, 1, spacing * (i+1), width-2);
         }
     }
 }
