@@ -1,7 +1,6 @@
 <?php 
     date_default_timezone_set('Etc/UTC');
     require './PHPMailerAutoload.php';
-
     //Check $_POST values
     $nom = $_POST['nom'];
     $prenom = $_POST['prenom'];
@@ -11,11 +10,6 @@
     $image = $_POST['image'];
     echo "$nom $prenom $email $adresse $cp $image";
     return;
-    if($nom == null || $prenom == null || $email == null || $adresse == null || $cp == null || $image == null){
-
-    }
-    
-
     //Send email using PHPMailer you may configure a gmail SMTP or other 
     $mail = new PHPMailer;
     $mail->isSMTP();
