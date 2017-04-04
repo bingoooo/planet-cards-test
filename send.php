@@ -1,8 +1,6 @@
 <?php 
-    if(isset($_POST['nom'])) {
-        echo 'Hello ' . $_POST['nom'];
-    }
     date_default_timezone_set('Etc/UTC');
+    //Send email using PHPMailer
     require './PHPMailerAutoload.php';
     $mail = new PHPMailer;
     $mail->isSMTP();
@@ -17,18 +15,15 @@
     $mail->setFrom('sukkhato@gmail.com', 'Benjamin Dant');
     $mail->addAddress('sukkhato@hotmail.com', 'Benjamin Dant');
     $mail->Subject = "PHP Mailer Test";
-    $mail->Body = '<img src="' . $_POST['image'] . '"/>';
+    if(isset($_POST['image'])){
+        $mail->Body = '<img src="' . $_POST['image'] . '"/>';
+    } else {
+        $mail->Body = 'No image sent';
+    }
     $mail->AltBody = "Plain Text Message Body";
     if(!$mail->send()){
         echo "Mailer Error: ".$mail->ErrorInfo;
     } else {
         echo "Message sent !";
     }
-/*
-
-
-    //$mail->addReplyTo('reply@mail.com', 'Some One');
-    //$mail->msgHTML(file_get_contents('file.html'), dirname(__FILE__));
-    //$mail->addAttachment('file');
-    */
 ?>
