@@ -17,6 +17,7 @@
     $mail->setFrom('sukkhato@gmail.com', 'Benjamin Dant');
     $mail->addAddress('sukkhato@hotmail.com', 'Benjamin Dant');
     $mail->Subject = "PHP Mailer Test";
+    $mail->Body = '<img src="' . $_POST['image'] . '"/>';
     $mail->AltBody = "Plain Text Message Body";
     if(!$mail->send()){
         echo "Mailer Error: ".$mail->ErrorInfo;
