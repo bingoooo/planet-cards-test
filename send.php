@@ -12,8 +12,8 @@
     $mail->Port = 587;
     $mail->SMTPSecure = 'tls';
     $mail->SMTPAuth = true;
-    $mail->Username = 'sukkhato@gmail.com';
-    $mail->Password = 'Synou4ne';
+    $mail->Username = USERNAME;
+    $mail->Password = PASSWORD;
     $mail->setFrom('sukkhato@gmail.com', 'Benjamin Dant');
     $mail->addAddress('sukkhato@hotmail.com', 'Benjamin Dant');
     $mail->Subject = "PHP Mailer Test";
