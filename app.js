@@ -114,7 +114,7 @@ send.addEventListener("click", function(event){
         adresse: adresse.value,
         cp: cp.value
     }
-    var datas = 'image='+image;
+    var datas = 'image='+image+'&nom='+nom.value;
     $.post("send.php", datas).done(function(data){
         console.log(data);
     });

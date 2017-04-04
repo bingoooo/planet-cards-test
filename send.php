@@ -18,16 +18,16 @@
     $mail->addAddress('sukkhato@hotmail.com', 'Benjamin Dant');
     $mail->Subject = "PHP Mailer Test";
     $mail->AltBody = "Plain Text Message Body";
+    if(!$mail->send()){
+        echo "Mailer Error: ".$mail->ErrorInfo;
+    } else {
+        echo "Message sent !";
+    }
 /*
 
 
     //$mail->addReplyTo('reply@mail.com', 'Some One');
     //$mail->msgHTML(file_get_contents('file.html'), dirname(__FILE__));
     //$mail->addAttachment('file');
-    if(!$mail->send()){
-        echo "Mailer Error: ".$mail->ErrorInfo;
-    } else {
-        echo "Message sent !";
-    }
     */
 ?>
