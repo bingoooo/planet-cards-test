@@ -2,10 +2,10 @@
     echo 'Hello World';
     date_default_timezone_set('Etc/UTC');
     require './PHPMailerAutoload.php';
+    $mail = new PHPMailer;
 /*
 
 
-    $mail = new PHPMailer;
     $mail->isSMTP();
     $mail->SMTPDebug = 2;
     $mail->Debugoutput = 'html';
