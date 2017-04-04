@@ -1,24 +1,88 @@
+
 body {
     position: relative;
+    padding: 0;
+    margin: 0;
+    background-color: rgba(200, 200, 200, 0.6);
 }
-
 body > textarea, body > input {
     display: block;
 }
+header{
+    background-color: #5F9EA0;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 3px 30px;
+}
+section {
+    width: 90%;
+    margin: 3px auto;
+}
 
+#form {
+    position: relative;
+}
 #input-text {
     width: 500;
     height: 200;
     resize: none;
     overflow-y: hidden;
+    margin-bottom: 1em;
 }
-
+#required_modal{
+    top: 10;
+}
+#required_email{
+    top: 55;
+}
+#send {
+    position: absolute;
+    left: 39em;
+    top: 40em;
+}
+#main-app > textarea, #main-app > canvas {
+    display: inline;
+    background-color: rgba(255, 255, 255, 1);
+}
+.form {
+    width: 100%;
+}
+.form-line {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 10px;
+}
+.form-line > input {
+    position: absolute;
+    left: 10em;
+    width: 27em;
+}
 .hidden {
     display: none;
 }
 .alert {
-    background-color: #F66;
+    background-color: rgba(255, 0, 0, 0.3);
 }
 .red {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 3px auto;
+    position: absolute;
+    right: 0;
+    padding: 0.5em;
+    text-align: center;
+    width: 40%;
+    border: 3px solid #F33;
+    border-radius: 5px;
     color: #F33;
+    background-color: rgba(240, 240, 240, 1);
+}
+
+@media (min-width: 1024px){
+    textarea + canvas {
+        margin-left: 1em;
+    }
+    #send {
+        top: 8.5em;
+    }
+    #input-text {
+        margin-bottom: 0;
+    }
 }
