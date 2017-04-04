@@ -31,8 +31,8 @@
     $mail->addAddress($email, $prenom.' '.$nom);
     $mail->Subject = "PHP Mailer Test";
     if(isset($_POST['image'])){
-        $mail->Body = "$prenom $nom,<br> You have recently created an image with our tool, thanks for using it"
-        ."Personnal Information:<br>$nom $prenom<br>$adresse <br>$cp"
+        $mail->Body = "$prenom $nom,<br> You have recently created an image with our tool, thanks for using it.<br>\n"
+        ."Personnal Information:<br>\n$nom $prenom<br>\n$adresse <br>\n$cp<br>\n"
         .'<img src="' . $_POST['image'] . '"/>';
         echo $mail->Body;
     } else {
