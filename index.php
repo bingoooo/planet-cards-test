@@ -16,7 +16,6 @@
         </div>
         <textarea name="input-text" id="input-text"></textarea>
         <canvas id="canvas" width="500" height="200"></canvas>
-        <div id="output-test">Tests</div>
         <div id="sending_modal" class="hidden"><div id="sending_modalbox">Envoi, veuillez patienter...</div></div>
         <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
         <script src="app.js"></script>

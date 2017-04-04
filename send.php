@@ -1,6 +1,6 @@
 <?php 
     date_default_timezone_set('Etc/UTC');
-    //Send email using PHPMailer
+    //Send email using PHPMailer you may configure a gmail SMTP or other
     require './PHPMailerAutoload.php';
     $mail = new PHPMailer;
     $mail->isSMTP();

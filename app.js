@@ -3,8 +3,6 @@
  * Application main javascript file
  */
 
-console.log('Main app.js file');
-
 // Main variables declaration
 
 var input = document.getElementById("input-text");
@@ -19,8 +17,6 @@ canvas.width = width;
 canvas.height = height;
 var ctx = canvas.getContext("2d");
 
-//Debug
-var divTest = document.getElementById('output-test');
 
 
 /*************************************************************************************************************/
@@ -56,7 +52,6 @@ send.addEventListener("click", function(event){
     console.log("clicked", event);
 
     //Check if required fields has all been full filled
-    /*
     var unfilled = false;
     var testEmail = email.value.match(/@/g);
     if(nom.value === ''){
@@ -97,15 +92,14 @@ send.addEventListener("click", function(event){
     } else {
         required.classList.add('hidden');
     }
-    */
 
     //Convert canvas to image
     var image = new Image();
     image = canvas.toDataURL("image/png");
-    //console.log(image);
-    //divTest.innerHTML = '<img src="' + image + '" />';
 
     //POST datas in back end for treatment
+    //TODO : Use json data for better view but better needs back end treatment
+    /*
     var datas = {
         image: image,
         nom: nom.value,
@@ -114,7 +108,8 @@ send.addEventListener("click", function(event){
         adresse: adresse.value,
         cp: cp.value
     }
-    var datas = 'image='+image+'&nom='+nom.value;
+    */
+    var datas = 'image=' + image + '&nom=' + nom.value + '&prenom=' + prenom.value + '&email=' + email.value + '&adresse=' + adresse.value + '&cp=' + cp.value;
     $.post("send.php", datas).done(function(data){
         console.log(data);
     });
@@ -155,8 +150,8 @@ function divideTextByEnter(text){
 }
 
 //Analyses the table values and divide text if greater than determined width
+//TODO : use the divideTextFitWidth function for code reusability
 function divideTableFitWidth(table, width){
-    console.log(table);
     var renderTable = [];
     var stringToEvaluate = "";
     var string = "";
@@ -164,6 +159,7 @@ function divideTableFitWidth(table, width){
     if(table === undefined){
         return renderTable;
     }
+    //Compute the maximum character width
     for (var i = 0; i < 100; i++){
         string += "a";
         var metrics = ctx.measureText(string);
@@ -172,6 +168,7 @@ function divideTableFitWidth(table, width){
             break;
         }
     }
+    //Divides strings if too much long from desired width
     table.forEach(function(data){
         if(data.length > maxLength){
             data = data.replace('\n', '');

@@ -1,14 +1,22 @@
 # Test Planet Cards  
 
-__Exercice Javascript Planet-Cards__  
+## __Exercice Javascript Planet-Cards__  
+  
+### Fichiers de code  
+  
+app.js  
+index.php  
+send.php  
+style.css  
   
   
-* Objectif:  
+  
+### * Objectif:  
   
 Envoyer par email un formulaire accompagné d’une image générée depuis un texte saisi sur une page web.  
   
   
-* Spécificités:  
+### * Spécificités:  
   
 Le texte doit être tapé dans un textarea et le texte doit apparaître sur un canvas html5 en direct au cours de la frappe de l’utilisateur.  
   
