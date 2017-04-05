@@ -1,6 +1,13 @@
 <?php 
     date_default_timezone_set('Etc/UTC');
     require './PHPMailerAutoload.php';
+
+    //Check values if exists
+    if(!isset($_POST['nom']) || !isset($_POST['prenom']) || !isset($_POST['email']) || !isset($_POST['adresse']) || !isset($_POST['cp']) || !isset($_POST['image'])){
+        echo 'values missing';
+        exit();
+    }
+
     //Get values from heroku config vars
     $username = getenv('USERNAME');
     $password = getenv('PASSWORD');
